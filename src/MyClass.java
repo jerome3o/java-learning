@@ -1,7 +1,8 @@
-import utils.wtf.MyUtils;
+import utils.Database;
 
 public class MyClass {
     public static void main(String[] args) {
-        System.out.println(MyUtils.capitalize("hello World! hey"));
+        Database.getConnection();
+        System.out.println("hey");
     }
 }
