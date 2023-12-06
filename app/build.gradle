@@ -23,6 +23,7 @@ dependencies {
 
     // This dependency is used by the application.
     implementation libs.guava
+    implementation "org.xerial:sqlite-jdbc:3.44.1.0"
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -34,7 +35,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'java.com.sqlitedemo.App'
+    mainClass = 'com.sqlitedemo.App'
 }
 
 tasks.named('test') {
