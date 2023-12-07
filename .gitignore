@@ -5,5 +5,5 @@
 build
 
 .vscode/
-
 bin/
+*.db

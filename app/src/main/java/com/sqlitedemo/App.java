@@ -3,19 +3,29 @@
  */
 package com.sqlitedemo;
 
-import java.sql.*;
+import org.hibernate.*;
+import org.hibernate.cfg.Configuration;
 
 public class App {
-    public static void main(String args[]) {
-        Connection c = null;
 
-        try {
-            Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:test.db");
-        } catch (Exception e) {
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            System.exit(0);
-        }
-        System.out.println("Opened database successfully");
+    public static void main(String args[]) {
+        Configuration configuration = new Configuration();
+        // SQLite Settings
+        configuration.setProperty("connection.driver_class", "org.sqlite.JDBC");
+        configuration.setProperty("connection.url", "jdbc:sqlite:sample.db");
+        configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.SQLiteDialect");
+        configuration.addAnnotatedClass(User.class);
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        User user = new User();
+        user.setName("Fake User");
+        user.setEmail("hey@fake.com");
+        session.persist(user);
+
+        tx.commit();
+        session.close();
     }
 }
