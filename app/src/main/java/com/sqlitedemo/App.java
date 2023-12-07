@@ -11,9 +11,10 @@ public class App {
     public static void main(String args[]) {
         Configuration configuration = new Configuration();
         // SQLite Settings
-        configuration.setProperty("connection.driver_class", "org.sqlite.JDBC");
-        configuration.setProperty("connection.url", "jdbc:sqlite:sample.db");
-        configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.SQLiteDialect");
+        configuration.setProperty("hibernate.connection.driver_class", "org.sqlite.JDBC");
+        configuration.setProperty("hibernate.connection.url", "jdbc:sqlite:test.db");
+        configuration.setProperty("hibernate.dialect",
+                "org.hibernate.community.dialect.SQLiteDialect");
         configuration.addAnnotatedClass(User.class);
         SessionFactory sessionFactory = configuration.buildSessionFactory();
 
