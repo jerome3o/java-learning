@@ -11,6 +11,7 @@ public class App {
     public static void main(String args[]) {
         Configuration configuration = new Configuration();
         // SQLite Settings
+        configuration.setProperty("hbm2ddl.auto", "create");
         configuration.setProperty("hibernate.connection.driver_class", "org.sqlite.JDBC");
         configuration.setProperty("hibernate.connection.url", "jdbc:sqlite:test.db");
         configuration.setProperty("hibernate.dialect",
