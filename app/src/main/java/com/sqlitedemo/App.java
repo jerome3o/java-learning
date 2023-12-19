@@ -10,8 +10,8 @@ public class App {
 
     public static void main(String args[]) {
         Configuration configuration = new Configuration();
-        // SQLite Settings
-        configuration.setProperty("hbm2ddl.auto", "create");
+        // SQLite Settings (this should be configured in a persistence.xml file or something)
+        configuration.setProperty("hibernate.hbm2ddl.auto", "create");
         configuration.setProperty("hibernate.connection.driver_class", "org.sqlite.JDBC");
         configuration.setProperty("hibernate.connection.url", "jdbc:sqlite:test.db");
         configuration.setProperty("hibernate.dialect",
